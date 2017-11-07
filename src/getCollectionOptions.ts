@@ -1,43 +1,34 @@
 import * as request from 'request';
+import * as filter from './filter';
 
 export class GetCollectionOptions {
-  public static GetCollectionOptions: any = function (token: string) {
+  public static GetCollectionOptions = (
+    token: string,
+    filterToUse: filter.Filter,
+    rootUrl: string
+  ): Promise<filter.Filter> => {
     return new Promise((res, rej) => {
+      if (token.length < 10) {
+        rej('Not token has been provided');
+      }
 
-      if (token.length < 10) { rej('Not token has been provided'); }
-
-      var options = {
+      const options = {
         method: 'POST',
-        url: 'http://localdata.betfair.com/api/GetCollectionOptions',
-        headers:
-        {
+        url: rootUrl + '/api/GetCollectionOptions',
+        headers: {
           'content-type': 'application/json',
-          ssoid: token
+          ssoid: token,
         },
-        body:
-        {
-          sport: 'Horse Racing',
-          plan: 'Basic Plan',
-          fromDay: 1,
-          fromMonth: 3,
-          fromYear: 2017,
-          toDay: 31,
-          toMonth: 3,
-          toYear: 2017,
-          eventId: null,
-          eventName: null,
-          marketTypesCollection: ['WIN', 'PLACE'],
-          countriesCollection: ['GB', 'IE'],
-          fileTypeCollection: ['M']
-        },
-        json: true
+        body: filterToUse,
+        json: true,
       };
 
-      request(options, function (error, response, body) {
-        if (error) rej(error);
+      request(options, (error, response, body) => {
+        if (error) {
+          rej(error);
+        }
         res(body);
       });
-
     });
   };
 }

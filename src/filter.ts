@@ -2,13 +2,13 @@ export class Filter {
   public sport: string;
   public plan: string;
 
-  public fromDay: string;
-  public fromMonth: string;
-  public fromYear: string;
+  public fromDay: number;
+  public fromMonth: number;
+  public fromYear: number;
 
-  public toDay: string;
-  public toMonth: string;
-  public toYear: string;
+  public toDay: number;
+  public toMonth: number;
+  public toYear: number;
 
   public eventId: string;
   public eventName: string;
