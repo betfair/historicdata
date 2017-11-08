@@ -1,7 +1,4 @@
 export class DataPackage {
-
-  constructor() { }
-
   // The string name of the sport
   public sport: string;
 
@@ -13,4 +10,7 @@ export class DataPackage {
 
   // The ID of the purchased item
   public purchaseItemId: number;
+  constructor() {
+    //
+  }
 }

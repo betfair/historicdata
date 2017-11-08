@@ -1,7 +1,4 @@
 export class Filter {
-
-  constructor() { };
-
   /** The text name of the sport (might be better to make this a enum) */
   public sport: string;
   /** The text plan, Basic Plan, Advanced Plan or Pro Plan (might be better to make this a enum) */
@@ -30,4 +27,8 @@ export class Filter {
   public marketTypesCollection: string[];
   public countriesCollection: string[];
   public fileTypeCollection: string[];
+
+  constructor() {
+    //
+  }
 }

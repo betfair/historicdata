@@ -45,9 +45,9 @@ export class HistoricData {
     return new Promise((res, rej) => {
       getCollectionOptions.GetCollectionOptions
         .GetCollectionOptions(
-        this.sessionToken,
-        filterToUse,
-        this.options.baseUrl
+          this.sessionToken,
+          filterToUse,
+          this.options.baseUrl
         )
         .then((data: any) => {
           res(data);
@@ -64,9 +64,9 @@ export class HistoricData {
     return new Promise((res, rej) => {
       getAdvBasketDataSize.GetAdvBasketDataSize
         .GetAdvBasketDataSize(
-        this.sessionToken,
-        filterToUse,
-        this.options.baseUrl
+          this.sessionToken,
+          filterToUse,
+          this.options.baseUrl
         )
         .then((data: any) => {
           res(data);
@@ -78,14 +78,16 @@ export class HistoricData {
     filterToUse: filter.Filter
   ): Promise<string[]> => {
     return new Promise((res, rej) => {
-      while (this.currentDownloads >= this.options.maximumParallelDownloads) { }
+      while (this.currentDownloads >= this.options.maximumParallelDownloads) {
+        //
+      }
 
       this.currentDownloads++;
       downloadListOfFiles.DownloadListOfFiles
         .DownloadListOfFiles(
-        this.sessionToken,
-        filterToUse,
-        this.options.baseUrl
+          this.sessionToken,
+          filterToUse,
+          this.options.baseUrl
         )
         .then((data: any) => {
           this.currentDownloads--;
