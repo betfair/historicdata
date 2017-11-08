@@ -8,6 +8,8 @@ import * as getCollectionOptions from './getCollectionOptions';
 import * as GetMyData from './GetMyData';
 import * as HistoricDataOptions from './historicDataOptions';
 
+export { BasketSizeReport, DataPackage, filter, HistoricDataOptions };
+
 export class HistoricData {
   private sessionToken: string;
   private currentDownloads = 0;
