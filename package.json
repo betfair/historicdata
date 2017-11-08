@@ -1,16 +1,16 @@
 {
-  "name": "historicdata",
-  "version": "1.0.0",
-  "description": "historicdata",
+  "name": "betfair-js-historicdata",
+  "version": "1.0.1",
+  "description": "Betfair historic data NodeJS client",
   "license": "MIT",
-  "repository": "",
+  "repository": "https://github.com/betfair-js/historicdata",
   "author": {
-    "name": "",
+    "name": "Mike Bateman",
     "email": "",
-    "url": ""
+    "url": "https://historicdata.betfair.com"
   },
   "keywords": [
-    ""
+    "Betfair"
   ],
   "files": [
     "lib"
