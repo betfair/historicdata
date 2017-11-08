@@ -27,14 +27,14 @@ test('It should get my data', async () => {
   return hdClient.getMyData().then(data => {
     expect(data).toBeTruthy();
     expect(data.length).toBeGreaterThan(0);
-    expect(data[0].plan).toBe('Basic Plan');
+    expect(data[0].plan).toBeTruthy();
   });
 });
 
 test('it should GetCollectionOptions for horse racing markets', async () => {
   expect.assertions(3);
 
-  return hdClient.getCollectionOptions(myfilter).then((data) => {
+  return hdClient.getCollectionOptions(myfilter).then(data => {
     expect(data).toBeTruthy();
     expect(data.marketTypesCollection).toBeTruthy();
     expect(data.marketTypesCollection.length).toBe(2);
@@ -44,7 +44,7 @@ test('it should GetCollectionOptions for horse racing markets', async () => {
 test('it should GetAdvBasketDataSize for horse racing markets', async () => {
   expect.assertions(4);
 
-  return hdClient.getAdvBasketDataSize(myfilter).then((data) => {
+  return hdClient.getAdvBasketDataSize(myfilter).then(data => {
     expect(data).toBeTruthy();
     expect(data.totalSizeMB).toBeTruthy();
     expect(data.fileCount).toBeTruthy();
@@ -54,7 +54,7 @@ test('it should GetAdvBasketDataSize for horse racing markets', async () => {
 
 test('it should DownloadListOfFiles  ', async () => {
   expect.assertions(2);
-  return hdClient.downloadListOfFiles(myfilter).then((data) => {
+  return hdClient.downloadListOfFiles(myfilter).then(data => {
     expect(data).toBeTruthy();
     expect(data.length).toBeGreaterThan(0);
   });
@@ -70,20 +70,25 @@ test('it should DownloadFile  ', async () => {
     });
 });
 
-
 // Need to find out a better way to test this
-test('it should DownloadFiles  ', (done) => {
+test('it should DownloadFiles  ', done => {
   expect.assertions(1);
 
-  hdClient.downloadListOfFiles(myfilter).then((data) => {
-
-    hdClient.downloadFile(data[0]).then((data) => { expect(data).toBe(true); });
-    hdClient.downloadFile(data[1]).then((data) => { expect(data).toBe(true); });
-    hdClient.downloadFile(data[2]).then((data) => { expect(data).toBe(true); });
-    hdClient.downloadFile(data[3]).then((data) => { expect(data).toBe(true); });
+  hdClient.downloadListOfFiles(myfilter).then(data => {
+    hdClient.downloadFile(data[0]).then(data => {
+      expect(data).toBe(true);
+    });
+    hdClient.downloadFile(data[1]).then(data => {
+      expect(data).toBe(true);
+    });
+    hdClient.downloadFile(data[2]).then(data => {
+      expect(data).toBe(true);
+    });
+    hdClient.downloadFile(data[3]).then(data => {
+      expect(data).toBe(true);
+    });
 
     expect(data.length).toBeGreaterThan(0);
     done();
-
   });
 });
