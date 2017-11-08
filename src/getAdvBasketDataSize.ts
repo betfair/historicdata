@@ -1,6 +1,6 @@
 import * as BasketSizeReport from './BasketSizeReport';
-import * as request from 'request';
 import * as filter from './filter';
+import * as request from 'request';
 
 export class GetAdvBasketDataSize {
   public static GetAdvBasketDataSize = (
