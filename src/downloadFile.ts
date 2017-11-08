@@ -34,7 +34,6 @@ export class DownloadFile {
         response.on('end', () => {
           res(true);
         });
-
       });
     });
   };
