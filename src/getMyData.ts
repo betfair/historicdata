@@ -12,13 +12,13 @@ export class GetMyData {
       }
 
       const options = {
-        method: 'GET',
-        url: rootUrl + '/api/GetMyData',
         headers: {
           'content-type': 'application/json',
           ssoid: token,
         },
         json: true,
+        method: 'GET',
+        url: rootUrl + '/api/GetMyData',
       };
 
       request(options, (error, response, body) => {

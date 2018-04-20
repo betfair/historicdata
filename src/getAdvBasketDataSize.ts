@@ -14,14 +14,14 @@ export class GetAdvBasketDataSize {
       }
 
       const options = {
-        method: 'POST',
-        url: rootUrl + '/api/GetAdvBasketDataSize',
+        body: filterToUse,
         headers: {
           'content-type': 'application/json',
           ssoid: token,
         },
-        body: filterToUse,
         json: true,
+        method: 'POST',
+        url: rootUrl + '/api/GetAdvBasketDataSize',
       };
 
       request(options, (error, response, body) => {

@@ -13,24 +13,18 @@ export class DownloadFile {
       }
 
       const options = {
-        method: 'GET',
-        url: rootUrl + '/api/DownloadFile',
-        qs: { filePath },
         headers: {
           'content-type': 'application/json',
           ssoid: token,
         },
+        method: 'GET',
+        qs: { filePath },
+        url: rootUrl + '/api/DownloadFile',
       };
 
       request(options).on('response', response => {
-        const contentDisposition = response.headers['content-disposition'];
-        const filename = contentDisposition.slice(
-          21,
-          contentDisposition.length
-        );
-
+        const filename = response.headers['content-filename'];
         response.pipe(fs.createWriteStream('./downloads/' + filename));
-
         response.on('end', () => {
           res(true);
         });

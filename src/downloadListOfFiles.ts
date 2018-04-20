@@ -13,14 +13,14 @@ export class DownloadListOfFiles {
       }
 
       const options = {
-        method: 'POST',
-        url: rootUrl + '/api/DownloadListOfFiles',
+        body: filterToUse,
         headers: {
           'content-type': 'application/json',
           ssoid: token,
         },
-        body: filterToUse,
         json: true,
+        method: 'POST',
+        url: rootUrl + '/api/DownloadListOfFiles',
       };
 
       request(options, (error, response, body) => {

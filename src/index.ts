@@ -33,11 +33,12 @@ export class HistoricData {
    */
   public getMyData = (): Promise<DataPackage.DataPackage[]> => {
     return new Promise((res, rej) => {
-      GetMyData.GetMyData
-        .GetMyData(this.sessionToken, this.options.baseUrl)
-        .then((data: DataPackage.DataPackage[]) => {
-          res(data);
-        });
+      GetMyData.GetMyData.GetMyData(
+        this.sessionToken,
+        this.options.baseUrl
+      ).then((data: DataPackage.DataPackage[]) => {
+        res(data);
+      });
     });
   };
 
@@ -45,34 +46,30 @@ export class HistoricData {
     filterToUse: filter.Filter
   ): Promise<filter.Filter> => {
     return new Promise((res, rej) => {
-      getCollectionOptions.GetCollectionOptions
-        .GetCollectionOptions(
-          this.sessionToken,
-          filterToUse,
-          this.options.baseUrl
-        )
-        .then((data: any) => {
-          res(data);
-        });
+      getCollectionOptions.GetCollectionOptions.GetCollectionOptions(
+        this.sessionToken,
+        filterToUse,
+        this.options.baseUrl
+      ).then((data: any) => {
+        res(data);
+      });
     });
   };
 
   /**
-   * 
+   *
    */
   public getAdvBasketDataSize = (
     filterToUse: filter.Filter
   ): Promise<BasketSizeReport.BasketSizeReport> => {
     return new Promise((res, rej) => {
-      getAdvBasketDataSize.GetAdvBasketDataSize
-        .GetAdvBasketDataSize(
-          this.sessionToken,
-          filterToUse,
-          this.options.baseUrl
-        )
-        .then((data: any) => {
-          res(data);
-        });
+      getAdvBasketDataSize.GetAdvBasketDataSize.GetAdvBasketDataSize(
+        this.sessionToken,
+        filterToUse,
+        this.options.baseUrl
+      ).then((data: any) => {
+        res(data);
+      });
     });
   };
 
@@ -85,26 +82,26 @@ export class HistoricData {
       }
 
       this.currentDownloads++;
-      downloadListOfFiles.DownloadListOfFiles
-        .DownloadListOfFiles(
-          this.sessionToken,
-          filterToUse,
-          this.options.baseUrl
-        )
-        .then((data: any) => {
-          this.currentDownloads--;
-          res(data);
-        });
+      downloadListOfFiles.DownloadListOfFiles.DownloadListOfFiles(
+        this.sessionToken,
+        filterToUse,
+        this.options.baseUrl
+      ).then((data: any) => {
+        this.currentDownloads--;
+        res(data);
+      });
     });
   };
 
   public downloadFile = (filePath: string): Promise<boolean> => {
     return new Promise((res, rej) => {
-      downloadFile.DownloadFile
-        .DownloadFile(this.sessionToken, filePath, this.options.baseUrl)
-        .then(data => {
-          res(data);
-        });
+      downloadFile.DownloadFile.DownloadFile(
+        this.sessionToken,
+        filePath,
+        this.options.baseUrl
+      ).then(data => {
+        res(data);
+      });
     });
   };
 }

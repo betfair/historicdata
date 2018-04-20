@@ -13,14 +13,14 @@ export class GetCollectionOptions {
       }
 
       const options = {
-        method: 'POST',
-        url: rootUrl + '/api/GetCollectionOptions',
+        body: filterToUse,
         headers: {
           'content-type': 'application/json',
           ssoid: token,
         },
-        body: filterToUse,
         json: true,
+        method: 'POST',
+        url: rootUrl + '/api/GetCollectionOptions',
       };
 
       request(options, (error, response, body) => {
