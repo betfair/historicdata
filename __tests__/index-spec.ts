@@ -52,7 +52,7 @@ test('it should GetAdvBasketDataSize for horse racing markets', async () => {
   });
 });
 
-test('it should DownloadListOfFiles  ', async () => {
+test('it should DownloadListOfFiles', async () => {
   expect.assertions(2);
   return hdClient.downloadListOfFiles(myfilter).then(data => {
     expect(data).toBeTruthy();
@@ -60,7 +60,7 @@ test('it should DownloadListOfFiles  ', async () => {
   });
 });
 
-test('it should DownloadFile  ', async () => {
+test('it should DownloadFile', async () => {
   expect.assertions(1);
 
   return hdClient
@@ -71,7 +71,7 @@ test('it should DownloadFile  ', async () => {
 });
 
 // Need to find out a better way to test this
-test('it should DownloadFiles  ', done => {
+test('it should DownloadFiles', done => {
   expect.assertions(1);
 
   hdClient.downloadListOfFiles(myfilter).then(data => {
