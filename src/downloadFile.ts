@@ -5,6 +5,7 @@ export class DownloadFile {
   public static DownloadFile = (
     token: string,
     filePath: string,
+    dropFolder: string,
     rootUrl: string
   ): Promise<boolean> => {
     return new Promise((res, rej) => {
@@ -24,11 +25,13 @@ export class DownloadFile {
 
       request(options).on('response', response => {
         const filename = response.headers['content-filename'];
-        response.pipe(fs.createWriteStream('./downloads/' + filename));
+        response.pipe(fs.createWriteStream(dropFolder + "/" + filename));
         response.on('end', () => {
           res(true);
         });
       });
+
     });
+
   };
 }

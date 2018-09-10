@@ -93,11 +93,12 @@ export class HistoricData {
     });
   };
 
-  public downloadFile = (filePath: string): Promise<boolean> => {
+  public downloadFile = (filePath: string, dropFolder: string): Promise<boolean> => {
     return new Promise((res, rej) => {
       downloadFile.DownloadFile.DownloadFile(
         this.sessionToken,
         filePath,
+        dropFolder,
         this.options.baseUrl
       ).then(data => {
         res(data);

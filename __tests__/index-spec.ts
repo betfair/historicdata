@@ -52,43 +52,46 @@ test('it should GetAdvBasketDataSize for horse racing markets', async () => {
   });
 });
 
-test('it should DownloadListOfFiles', async () => {
-  expect.assertions(2);
-  return hdClient.downloadListOfFiles(myfilter).then(data => {
-    expect(data).toBeTruthy();
-    expect(data.length).toBeGreaterThan(0);
-  });
-});
+test(
+  'it should DownloadListOfFiles',
+  async () => {
+    expect.assertions(2);
+    return hdClient.downloadListOfFiles(myfilter).then(data => {
+      expect(data).toBeTruthy();
+      expect(data.length).toBeGreaterThan(0);
+    });
+  },
+  10000
+);
 
 test('it should DownloadFile', async () => {
   expect.assertions(1);
 
   return hdClient
-    .downloadFile('/data/xds/historic/BASIC/28133820/1.130026702.bz2')
+    .downloadFile('/data/xds/historic/BASIC/28133820/1.130026702.bz2', './downloads')
     .then((data: boolean) => {
       expect(data).toBe(true);
     });
 });
 
-// Need to find out a better way to test this
 test('it should DownloadFiles', done => {
   expect.assertions(1);
 
   hdClient.downloadListOfFiles(myfilter).then(data => {
-    hdClient.downloadFile(data[0]).then(data => {
+    hdClient.downloadFile(data[0], './downloads').then(data => {
       expect(data).toBe(true);
     });
-    hdClient.downloadFile(data[1]).then(data => {
+    hdClient.downloadFile(data[1], './downloads').then(data => {
       expect(data).toBe(true);
     });
-    hdClient.downloadFile(data[2]).then(data => {
+    hdClient.downloadFile(data[2], './downloads').then(data => {
       expect(data).toBe(true);
     });
-    hdClient.downloadFile(data[3]).then(data => {
+    hdClient.downloadFile(data[3], './downloads').then(data => {
       expect(data).toBe(true);
     });
 
     expect(data.length).toBeGreaterThan(0);
     done();
   });
-});
+}, 10000);
